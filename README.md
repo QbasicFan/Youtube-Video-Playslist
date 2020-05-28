@@ -31,7 +31,7 @@ root setting.py
 ```
 INSTALLED_APPS = (
     ...
-    'project1',
+    'Youtube-Video-Playslist',#project1
     ...
 )
 ```
@@ -44,7 +44,7 @@ urlpatterns = i18n_patterns(
     url("^admin/", include(admin.site.urls)),
 	...
 
-    #url(r'project1/', include('project1.urls', namespace ="home")),
+    #url(r'project1/', include('Youtube-Video-Playslist.urls', namespace ="home")),#project1
 
 	...
 )
