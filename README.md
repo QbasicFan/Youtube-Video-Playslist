@@ -21,7 +21,7 @@ simply copy the link of any youtube video in the form, also add a video, select 
 
 * **Quickstart** 
 
-git clone 
+git clone https://github.com/QbasicFan/Youtube-Video-Playslist
 
 
 root setting.py
@@ -46,4 +46,24 @@ urlpatterns = i18n_patterns(
 	...
 )
 ```
+
+* **Test** 
+```
+python manage.py test book.tests
+python manage.py test bookId.tests
+python manage.py test user.tests
+...
+```
+
+* **Todo**
+
+* [] Add user account
+* [] Add comments
+* [] Add likes
+* [] Add social auth
+* [] Add test cases
+* [] Better filter system
+
+* **Credits** 
+
 
