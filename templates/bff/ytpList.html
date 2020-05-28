@@ -1,0 +1,179 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Phil Serme - animusicpark</title>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body onload="init(0,'https://www.youtube.com/watch?v=P1_wbo7jBHw&pbjreload=10')" >
+
+<div class="w3-teal" style="background-image: url({%static 'img/bf/animusicpark.jpg' %});background-attachment: scroll;background-size: 100%;background-repeat: no-repeat;height:400px">
+<h1>Youtube video playlist</h1>
+</div>
+
+
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:22%" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+
+
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright">X</i>
+    <h3 class="w3-wide"><b>Animusic Park</b></h3>
+  </div>
+  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+
+
+<button onclick="accordeon('regular')" class="w3-btn w3-block w3-black w3-left-align">Regular</button>
+<div id="regular" class="w3-container w3-hide">
+    {% for p in regu %}
+
+    <div class="w3-bar-item w3-button w3-hover-pink" onclick="init({{ p.id }},'{{ p.link }}','{{ p.vid}}')">
+        <h3>{{ p }}</h3>
+      <img id="im{{ p.id }}" src="https://i.ytimg.com/vi/{{ p.vid }}/hq720.jpg" style="width:80%"/>
+      <span>{{ p.cate }} | {{ p.rate }}/5</span>
+<hr>
+    </div>
+{% endfor %}
+</div>
+
+<button onclick="accordeon('wierd')" class="w3-btn w3-block w3-black w3-left-align">Wierd</button>
+<div id="wierd" class="w3-container w3-hide">
+    {% for p in wier %}
+
+    <div class="w3-bar-item w3-button w3-hover-pink" onclick="init({{ p.id }},'{{ p.link }}','{{ p.vid}}')">
+        <h3>{{ p }}</h3>
+      <img id="im{{ p.id }}" src="https://i.ytimg.com/vi/{{ p.vid }}/hq720.jpg" style="width:80%"/>
+      <span>{{ p.cate }} | {{ p.rate }}/5</span>
+<hr>
+    </div>
+{% endfor %}
+</div>
+
+<button onclick="accordeon('got')" class="w3-btn w3-block w3-black w3-left-align">Got</button>
+<div id="got" class="w3-container w3-hide">
+    {% for p in got %}
+
+    <div class="w3-bar-item w3-button w3-hover-pink" onclick="init({{ p.id }},'{{ p.link }}','{{ p.vid}}')">
+        <h3>{{ p }}</h3>
+      <img id="im{{ p.id }}" src="https://i.ytimg.com/vi/{{ p.vid }}/hq720.jpg" style="width:80%"/>
+      <span>{{ p.cate }} | {{ p.rate }}/5</span>
+<hr>
+    </div>
+{% endfor %}
+</div>
+
+
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+  <div class="w3-bar-item w3-padding-24 w3-wide">Animusic Park</div>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_toggle()"><i class="fa fa-bars"></i></a>
+
+
+</header>
+
+
+<div class="w3-content">
+
+
+<p id="demo">Add a video</p>
+<hr>
+
+<h1>Form</h1>
+
+<div class="w3-content">
+
+<form action="" method="POST">
+	 {% csrf_token %}
+<div class="row">
+	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
+	     Name :<span>{{ form.title }}</span>
+	 </div>
+	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
+    	 Link :<span>{{ form.link }}</span>
+    </div>
+</div>
+<div class="row">
+	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
+	     Type :<span>{{ form.cate }}</span>
+	 </div>
+	 <div class="sm-6 md-6 lg-6 col border border-6 border-primary">
+    	 Rate :<span>{{ form.rate }}</span>
+    </div>
+</div>
+<div class="text-center">
+    <input type="submit" >
+</div>
+</form>
+
+</div>
+
+<hr>
+
+
+
+<hr>
+
+    <div>
+<span id="ytVid" style="position: relative">ddd</span>
+
+<br><br><br><br><br><br>
+
+
+</div>
+
+</div>
+<script>
+
+function init(id,n,vid){
+var tuu= "<iframe style='width:100%;height:500px' src='https://www.youtube.com/embed/"+vid+"' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
+document.getElementById("demo").innerHTML = "The iD is : "+vid+" <img src='https://i.ytimg.com/vi/"+vid+"/hq720.jpg' style='width:30%'>";
+document.getElementById("ytVid").innerHTML = tuu;
+}
+
+
+
+// Open and close sidebar
+var tggl = true;
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  tggl = false
+
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  tggl = true
+
+
+}
+
+function w3_toggle(){
+    if (  tggl)
+    w3_open()
+    else
+    w3_close()
+
+}
+
+
+
+function accordeon(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+</script>
+
+</body>
+</html>
+
