@@ -57,13 +57,13 @@ python manage.py test user.tests
 
 * **Todo**
 
-* [] Add user account
-* [] Add comments
-* [] Add likes
-* [] Add social auth
-* [] Add test cases
-* [] Better filter system
+* [ ] Add user account
+* [ ] Add comments
+* [ ] Add likes
+* [ ] Add social auth
+* [ ] Add test cases
+* [ ] Better filter system
 
 * **Credits** 
-
+https://www.philserme.com
 
