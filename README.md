@@ -13,6 +13,9 @@ Save videos organize them and categorize them. Make it easier to have a collabor
 
 It is a simple full-stack application to teach about full-stack development. This is application is part of a series of applications to teach code.
 
+* Frontend: w3.css library
+* Backend: Django
+
 
 * **How to use the app**
 
